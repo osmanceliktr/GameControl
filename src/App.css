@@ -1,217 +1,307 @@
+/* Genel stiller */
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #f0f2f5;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
-.drop-area {
-  text-align: center;
-  padding: 20px;
-  width: 100%;
-  max-width: 600px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-
-.drop-area.dragging {
-  border: 2px dashed #007BFF;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-h1 {
-  color: #1a1a1a;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-}
-
-input[type="file"] {
-  display: none;
-}
-
-.button-group {
-  display: flex;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.file-upload-label, .analyze-button {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.file-upload-label {
-  background-color: #007BFF;
-  color: white;
-}
-
-.analyze-button {
-  background-color: #28a745;
-  color: white;
-  border: none;
-}
-
-.analyze-button:disabled {
-  background-color: #6c757d;
-  cursor: not-allowed;
-}
-
-.analyze-button:hover:not(:disabled) {
-  background-color: #218838;
-}
-
-.uploaded-image {
-  max-width: 100%;
-  max-height: 300px;
-  margin-top: 20px;
-  border-radius: 8px;
-  object-fit: contain;
-  border: 1px solid #ddd;
-}
-
-.error-message {
-  background-color: #ffebee;
-  color: #d32f2f;
-  padding: 1rem;
-  border-radius: 8px;
-  margin: 1rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.prediction-result {
-  margin-top: 30px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: left;
-}
-
-.result-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.prediction-result h3 {
-  margin: 0;
-  color: #333;
-}
-
-.prediction-result p {
-  margin: 0;
-  color: #555;
-  font-size: 18px;
-}
-
-.prediction-result table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-.prediction-result th, .prediction-result td {
-  padding: 10px;
-  border: 1px solid #ddd;
-  text-align: left;
-}
-
-.prediction-result th {
-  background-color: #f8f9fa;
-  font-weight: bold;
-}
-
-.prediction-result td {
-  background-color: #ffffff;
-}
-
-.prediction-result.definite {
-  background-color: #d4edda;
-  border-left: 5px solid #28a745;
-}
-
-.prediction-result.probable {
-  background-color: #fff3cd;
-  border-left: 5px solid #ffc107;
-}
-
-.prediction-result.uncertain {
-  background-color: #f8d7da;
-  border-left: 5px solid #dc3545;
-}
-
-.loading-spinner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-
-.spinner {
-  width: 30px;
-  height: 30px;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #0066ff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.loading-spinner p {
-  color: #666;
-  font-weight: bold;
-  margin: 0;
-}
-footer {
-  color: #666;
-  font-size: 12px;
-  margin-top: 20px;
-  padding: 0;
-  text-align: center;
-}
-footer p {
-  margin: 0;
-}
-footer a {
-  color: #007bff;
-  text-decoration: none;
-}
-
+/* Ana container - tüm sayfalar için ortak */
 .container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-color: #f0f2f5;
   padding: 20px;
+  overflow-y: auto;
 }
 
+/* Ortak kart stili - tüm sayfalar için */
 .app-card {
   background: white;
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   width: 100%;
+  max-width: 1200px; /* Detay ve haber sayfaları için daha geniş */
+  margin: 0 auto;
+}
+
+/* Ana sayfa için özel genişlik */
+.container > .app-card:first-child {
   max-width: 500px;
 }
 
+/* Detay sayfası stilleri */
+.app-detail-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navigation-buttons {
+  position: sticky;
+  top: 20px;
+  z-index: 1000;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.back-button, .news-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.back-button {
+  background-color: #6c757d;
+  color: white;
+}
+
+.news-button {
+  background-color: #0066ff;
+  color: white;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+.news-button:hover {
+  background-color: #0052cc;
+}
+
+/* Uygulama başlık bölümü */
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+  margin-top: 80px;
+}
+
+.app-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.app-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+/* İçerik bölümü */
+.app-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.content-with-icon {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.content-icon {
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+  object-fit: cover;
+  float: left;
+  margin-right: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.content-text {
+  flex: 1;
+  overflow: hidden;
+}
+
+.content-text h2 {
+  margin-top: 0;
+}
+
+.content-text p {
+  margin: 0;
+  line-height: 1.8;
+  color: #444;
+  text-align: justify;
+}
+
+/* Riskler bölümü */
+.risks-title {
+  color: #dc3545 !important;
+}
+
+.risks-title i {
+  color: #dc3545;
+}
+
+.risks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.risk-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #fff5f5;
+  border-radius: 8px;
+  border-left: 4px solid #dc3545;
+}
+
+/* Haberler sayfası stilleri */
+.news-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.news-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  margin-top: 80px; /* Navigation buttons için yer açıyoruz */
+}
+
+.news-list {
+  display: grid;
+  gap: 2rem;
+}
+
+.news-item {
+  display: flex;
+  gap: 2rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.news-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Mobil cihazlar için düzenlemeler */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .app-card {
+    margin: 0;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+
+  .navigation-buttons {
+    position: sticky;
+    top: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    margin: -1rem -1rem 1rem -1rem;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .app-header {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  .content-with-icon {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .content-icon {
+    float: none;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .content-text p {
+    text-align: left;
+  }
+
+  .news-item {
+    flex-direction: column;
+  }
+
+  .news-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .camera-view, .selected-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .app-header {
+    margin-top: 100px;
+  }
+
+  .app-info {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .app-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .app-header h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Ana sayfa kamera ve buton stilleri */
 .camera-container {
   display: flex;
   flex-direction: column;
@@ -220,8 +310,8 @@ footer a {
 }
 
 .camera-view {
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   object-fit: cover;
   border-radius: 10px;
   background-color: #000;
@@ -255,6 +345,7 @@ footer a {
 
 .action-button i {
   font-size: 1.1rem;
+  margin-right: 8px;
 }
 
 .action-button.primary {
@@ -267,20 +358,41 @@ footer a {
   color: white;
 }
 
+.action-button.tertiary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.action-button.danger {
+  background-color: #dc3545;
+  color: white;
+}
+
 .action-button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
   opacity: 0.7;
 }
 
-.scanning-message, .loading-message {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin: 1rem 0;
+.action-button.tertiary:hover:not(:disabled) {
+  background-color: #5a6268;
 }
 
+.action-button.danger:hover:not(:disabled) {
+  background-color: #c82333;
+}
+
+/* Yüklenen görsel stilleri */
+.selected-image {
+  width: 400px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+}
+
+/* Sonuçlar bölümü */
 .results-container {
   margin-top: 1.5rem;
 }
@@ -299,6 +411,12 @@ footer a {
   background-color: #f8f9fa;
   border-radius: 8px;
   margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.icon-item:hover {
+  background-color: #e9ecef;
 }
 
 .no-results {
@@ -307,39 +425,104 @@ footer a {
   font-style: italic;
 }
 
-.selected-image {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
-  border-radius: 10px;
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
+/* Loading ve error mesajları */
+.scanning-message, .loading-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
 }
 
-.action-button.tertiary {
-  background-color: #6c757d;
-  color: white;
+.error-message {
+  background-color: #ffebee;
+  color: #d32f2f;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.action-button.tertiary:hover:not(:disabled) {
-  background-color: #5a6268;
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #0066ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
-/* Kamera ve seçilen resim geçişleri için animasyon */
-.camera-view, .selected-image {
-  transition: all 0.3s ease;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* Dosya seçme butonu için özel stil */
-.action-button i {
-  margin-right: 8px;
+/* Mobil görünüm güncellemeleri */
+@media (max-width: 768px) {
+  /* ... mevcut mobil stiller ... */
+
+  .camera-view, .selected-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .button-group {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .action-button {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
-.action-button.danger {
-  background-color: #dc3545;
-  color: white;
+.news-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  color: #666;
+  font-size: 0.9rem;
 }
 
-.action-button.danger:hover:not(:disabled) {
-  background-color: #c82333;
+.news-source {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.news-item {
+  border: 1px solid #eee;
+  padding: 1.5rem;
+}
+
+.news-item a.read-more {
+  text-decoration: none;
+}
+
+.risks-content {
+  line-height: 1.8;
+  color: #444;
+}
+
+.risks-content p {
+  margin-bottom: 1rem;
+}
+
+.risks-content ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.risks-content li {
+  margin-bottom: 0.5rem;
+}
+
+.risks-content strong {
+  color: #dc3545;
+  font-weight: 600;
 }

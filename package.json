@@ -8,9 +8,12 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@tensorflow-models/mobilenet": "^2.1.1",
     "@tensorflow/tfjs": "^4.22.0",
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
     "cra-template": "1.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.1",
     "react-scripts": "5.0.1"
   },
   "scripts": {

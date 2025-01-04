@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { icons } from './data/icons';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import AppDetail from './pages/AppDetail';
+import News from './pages/News';
 
 function App() {
   const videoRef = useRef(null);
@@ -64,8 +67,8 @@ function App() {
     try {
       const constraints = {
         video: {
-          width: { ideal: 640 },
-          height: { ideal: 480 },
+          width: { ideal: 340 },
+          height: { ideal: 280 },
           facingMode: 'environment'
         }
       };
@@ -139,7 +142,7 @@ function App() {
       
       // Debug için canvas'ı görünür yap
       canvas.style.display = "block";
-      canvas.style.maxWidth = "300px";
+      canvas.style.maxWidth = "500px";
       canvas.style.marginTop = "10px";
 
       
@@ -202,7 +205,7 @@ function App() {
       mat.delete();
 
       if (detectedIcons.length === 0) {
-        setError("Hiçbir oyun ikonu tespit edilemedi!");
+        setError("Hiçbir oyun veya uygulama ikonu tespit edilemedi!");
       }
 
       // Sonuçları skora göre sırala
@@ -387,105 +390,131 @@ function App() {
     }
   };
 
+  const IconItem = ({ icon }) => {
+    const navigate = useNavigate();
+    
+    // String'den uygulama adını ve url'yi ayıkla
+    const iconName = icon.split(' (')[0]; // "Brawl Stars (85%)" -> "Brawl Stars"
+    const appData = icons.find(i => i.name === iconName);
+    
+    if (!appData) return null;
+
+    return (
+      <li 
+        className="icon-item" 
+        onClick={() => navigate(`/app/${appData.url}`)}
+        style={{ cursor: 'pointer' }}
+      >
+        <i className="fas fa-gamepad"></i>
+        {icon}
+      </li>
+    );
+  };
+
   return (
-    <div className="container">
-      <div className="app-card">
-        <h1>Oyun İkonu Tanıma</h1>
-        {!isOpenCVReady && (
-          <div className="loading-message">
-            <div className="spinner"></div>
-            <p>OpenCV.js yükleniyor, lütfen bekleyin...</p>
-          </div>
-        )}
-        
-        <div className="camera-container">
-          <video 
-            ref={videoRef} 
-            autoPlay 
-            playsInline 
-            className="camera-view"
-            style={{ display: selectedImage ? 'none' : 'block' }}
-          />
-          
-          {selectedImage && (
-            <img 
-              src={selectedImage} 
-              alt="Seçilen resim" 
-              className="selected-image"
-            />
-          )}
+    <Router>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={
+            <div className="app-card">
+              <h1>Uygulama ve Oyun İkonu Tanıma</h1>
+              {!isOpenCVReady && (
+                <div className="loading-message">
+                  <div className="spinner"></div>
+                  <p>OpenCV.js yükleniyor, lütfen bekleyin...</p>
+                </div>
+              )}
+              
+              <div className="camera-container">
+                <video 
+                  ref={videoRef} 
+                  autoPlay 
+                  playsInline 
+                  className="camera-view"
+                  style={{ display: selectedImage ? 'none' : 'block' }}
+                />
+                
+                {selectedImage && (
+                  <img 
+                    src={selectedImage} 
+                    alt="Seçilen resim" 
+                    className="selected-image"
+                  />
+                )}
 
-          <div className="button-group">
-            <button 
-              className={`action-button ${cameraActive ? 'danger' : 'primary'}`}
-              onClick={cameraActive ? stopCamera : startCamera} 
-              disabled={!isOpenCVReady}
-            >
-              <i className={`fas ${cameraActive ? 'fa-stop' : 'fa-camera'}`}></i>
-              {cameraActive ? 'Kamerayı Kapat' : 'Kamerayı Başlat'}
-            </button>
-            <button 
-              className="action-button secondary"
-              onClick={takePhoto} 
-              disabled={!isOpenCVReady || !cameraActive}
-            >
-              <i className="fas fa-camera-retro"></i>
-              Fotoğraf Çek
-            </button>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleFileSelect}
-              ref={fileInputRef}
-              style={{ display: 'none' }}
-            />
-            <button 
-              className="action-button tertiary"
-              onClick={() => fileInputRef.current.click()}
-              disabled={!isOpenCVReady}
-            >
-              <i className="fas fa-file-upload"></i>
-              Dosya Seç
-            </button>
-          </div>
+                <div className="button-group">
+                  <button 
+                    className={`action-button ${cameraActive ? 'danger' : 'primary'}`}
+                    onClick={cameraActive ? stopCamera : startCamera} 
+                    disabled={!isOpenCVReady}
+                  >
+                    <i className={`fas ${cameraActive ? 'fa-stop' : 'fa-camera'}`}></i>
+                    {cameraActive ? 'Kamerayı Kapat' : 'Kamerayı Başlat'}
+                  </button>
+                  <button 
+                    className="action-button secondary"
+                    onClick={takePhoto} 
+                    disabled={!isOpenCVReady || !cameraActive}
+                  >
+                    <i className="fas fa-camera-retro"></i>
+                    Fotoğraf Çek
+                  </button>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileSelect}
+                    ref={fileInputRef}
+                    style={{ display: 'none' }}
+                  />
+                  <button 
+                    className="action-button tertiary"
+                    onClick={() => fileInputRef.current.click()}
+                    disabled={!isOpenCVReady}
+                  >
+                    <i className="fas fa-file-upload"></i>
+                    Dosya Seç
+                  </button>
+                </div>
 
-          <canvas 
-            ref={canvasRef} 
-            className="preview-canvas"
-          />
-        </div>
+                <canvas 
+                  ref={canvasRef} 
+                  className="preview-canvas"
+                />
+              </div>
 
-        {error && (
-          <div className="error-message">
-            <i className="fas fa-exclamation-circle"></i>
-            {error}
-          </div>
-        )}
+              {error && (
+                <div className="error-message">
+                  <i className="fas fa-exclamation-circle"></i>
+                  {error}
+                </div>
+              )}
 
-        {scanning && (
-          <div className="scanning-message">
-            <div className="spinner"></div>
-            <p>Görüntü analiz ediliyor...</p>
-          </div>
-        )}
+              {scanning && (
+                <div className="scanning-message">
+                  <div className="spinner"></div>
+                  <p>Görüntü analiz ediliyor...</p>
+                </div>
+              )}
 
-        <div className="results-container">
-          <h3>Tespit Edilen Oyunlar</h3>
-          {matchedIcons.length > 0 ? (
-            <ul className="icons-list">
-              {matchedIcons.map((icon, index) => (
-                <li key={index} className="icon-item">
-                  <i className="fas fa-gamepad"></i>
-                  {icon}
-                </li>
-              ))}
-            </ul>
-          ) : !error && !scanning && (
-            <p className="no-results">Henüz bir oyun tespit edilmedi</p>
-          )}
-        </div>
+              <div className="results-container">
+                <h3>Tespit Edilen Oyunlar</h3>
+                {matchedIcons.length > 0 ? (
+                  <ul className="icons-list">
+                    {matchedIcons.map((icon, index) => (
+                      <IconItem key={index} icon={icon} />
+                    ))}
+                  </ul>
+                ) : !error && !scanning && (
+                  <p className="no-results">Henüz bir oyun tespit edilmedi</p>
+                )}
+              </div>
+            </div>
+          } />
+          <Route path="/app/:url" element={<AppDetail />} />
+          <Route path="/app/:url/news" element={<News />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 

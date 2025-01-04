@@ -9,50 +9,57 @@ import brawlStars8 from '../images/games/brawl-stars/brawl-stars8.png';
 import brawlStars9 from '../images/games/brawl-stars/brawl-stars9.png';
 import brawlStars10 from '../images/games/brawl-stars/brawl-stars10.png';
 import brawlStars11 from '../images/games/brawl-stars/brawl-stars11.png';
+import brawlStars12 from '../images/games/brawl-stars/brawl-stars12.png';
+import brawlStars13 from '../images/games/brawl-stars/brawl-stars13.png';
+import brawlStars14 from '../images/games/brawl-stars/brawl-stars14.png';
+import brawlStars15 from '../images/games/brawl-stars/brawl-stars15.png';
 
-import clashOfClans1 from '../images/games/clash-of-clans/clash-of-clans1.png';
-import clashOfClans2 from '../images/games/clash-of-clans/clash-of-clans2.png';
-import clashOfClans3 from '../images/games/clash-of-clans/clash-of-clans3.jpg';
-import clashOfClans4 from '../images/games/clash-of-clans/clash-of-clans4.png';
-import clashOfClans5 from '../images/games/clash-of-clans/clash-of-clans5.png';
-import clashOfClans6 from '../images/games/clash-of-clans/clash-of-clans6.png';
-import clashOfClans7 from '../images/games/clash-of-clans/clash-of-clans7.png';
-import clashOfClans8 from '../images/games/clash-of-clans/clash-of-clans8.png';
-import clashOfClans9 from '../images/games/clash-of-clans/clash-of-clans9.png';
-import clashOfClans10 from '../images/games/clash-of-clans/clash-of-clans10.png';
+import amongUs1 from '../images/games/amongus/amongus1.png';
+import amongUs2 from '../images/games/amongus/amongus2.png';
+import amongUs3 from '../images/games/amongus/amongus3.png';
+import amongUs4 from '../images/games/amongus/amongus4.png';
+import amongUs5 from '../images/games/amongus/amongus5.png';
+import amongUs6 from '../images/games/amongus/amongus6.png';
+import amongUs7 from '../images/games/amongus/amongus7.png';
+import amongUs8 from '../images/games/amongus/amongus8.png';
+import amongUs9 from '../images/games/amongus/amongus9.png';
+import amongUs10 from '../images/games/amongus/amongus10.png';
+import amongUs11 from '../images/games/amongus/amongus11.png';
+import amongUs12 from '../images/games/amongus/amongus12.png';
+import amongUs13 from '../images/games/amongus/amongus13.png';
+import amongUs14 from '../images/games/amongus/amongus14.png';
+import amongUs15 from '../images/games/amongus/amongus15.png';
+import amongUs16 from '../images/games/amongus/amongus16.png';
+import amongUs17 from '../images/games/amongus/amongus17.png';
+import amongUs18 from '../images/games/amongus/amongus18.png';
+import amongUs19 from '../images/games/amongus/amongus19.png';
+import amongUs20 from '../images/games/amongus/amongus20.png';
+import amongUs21 from '../images/games/amongus/amongus21.png';
 
-import eaSports1 from '../images/games/ea-sports/ea-sports1.png';
-import eaSports2 from '../images/games/ea-sports/ea-sports2.png';
-import eaSports3 from '../images/games/ea-sports/ea-sports3.png';
-import eaSports4 from '../images/games/ea-sports/ea-sports4.png';
-import eaSports5 from '../images/games/ea-sports/ea-sports5.png';
-import eaSports6 from '../images/games/ea-sports/ea-sports6.png';
-import eaSports7 from '../images/games/ea-sports/ea-sports7.png';
-import eaSports8 from '../images/games/ea-sports/ea-sports8.png';
-import eaSports9 from '../images/games/ea-sports/ea-sports9.png';
-import eaSports10 from '../images/games/ea-sports/ea-sports10.png';
-import eaSports11 from '../images/games/ea-sports/ea-sports11.png';
-import eaSports12 from '../images/games/ea-sports/ea-sports12.png';
-import eaSports13 from '../images/games/ea-sports/ea-sports13.png';
-import eaSports14 from '../images/games/ea-sports/ea-sports14.png';
-
-import pubg1 from '../images/games/pubg/pubg1.png';
-import pubg2 from '../images/games/pubg/pubg2.png';
-import pubg3 from '../images/games/pubg/pubg3.jpg';
-import pubg4 from '../images/games/pubg/pubg4.png';
-import pubg5 from '../images/games/pubg/pubg5.png';
-import pubg6 from '../images/games/pubg/pubg6.png';
-import pubg7 from '../images/games/pubg/pubg7.png';
-import pubg8 from '../images/games/pubg/pubg8.png';
-import pubg9 from '../images/games/pubg/pubg9.png';
-import pubg10 from '../images/games/pubg/pubg10.png';
-import pubg11 from '../images/games/pubg/pubg11.png';
-import pubg12 from '../images/games/pubg/pubg12.png';
-
+import snapchat1 from '../images/games/snapchat/snapchat1.jpg';
+import snapchat2 from '../images/games/snapchat/snapchat2.png';
+import snapchat3 from '../images/games/snapchat/snapchat3.png';
+import snapchat4 from '../images/games/snapchat/snapchat4.jpg';
+import snapchat5 from '../images/games/snapchat/snapchat5.png';
+import snapchat6 from '../images/games/snapchat/snapchat6.png';
+import snapchat7 from '../images/games/snapchat/snapchat7.jpg';
+import snapchat8 from '../images/games/snapchat/snapchat8.jpg';
+import snapchat9 from '../images/games/snapchat/snapchat9.png';
+import snapchat10 from '../images/games/snapchat/snapchat10.png';
+import snapchat11 from '../images/games/snapchat/snapchat11.png';
+import snapchat12 from '../images/games/snapchat/snapchat12.png';
+import snapchat13 from '../images/games/snapchat/snapchat13.png';
+import snapchat14 from '../images/games/snapchat/snapchat14.png';
+import snapchat15 from '../images/games/snapchat/snapchat15.png';
+import snapchat16 from '../images/games/snapchat/snapchat16.jpg';
+import snapchat17 from '../images/games/snapchat/snapchat17.png';
+import snapchat18 from '../images/games/snapchat/snapchat18.png';
+import snapchat19 from '../images/games/snapchat/snapchat19.png';
+import snapchat20 from '../images/games/snapchat/snapchat20.png';
 
 export const icons = [
   {
-    name: "Brawl Stars", variants: [
+    name: "Brawl Stars",url:'brawl-stars', variants: [
       { path: brawlStars1 },
       { path: brawlStars2 },
       { path: brawlStars3 },
@@ -64,54 +71,59 @@ export const icons = [
       { path: brawlStars9 },
       { path: brawlStars10 },
       { path: brawlStars11 },
+      { path: brawlStars12 },
+      { path: brawlStars13 },
+      { path: brawlStars14 },
+      { path: brawlStars15 },
     ]
   },
   {
-    name: "Clash of Clans", variants: [
-      { path: clashOfClans1 },
-      { path: clashOfClans2 },
-      { path: clashOfClans3 },
-      { path: clashOfClans4 },
-      { path: clashOfClans5 },
-      { path: clashOfClans6 },
-      { path: clashOfClans7 },
-      { path: clashOfClans8 },
-      { path: clashOfClans9 },
-      { path: clashOfClans10 }
+    name: "Among Us",url:'amongus', variants: [
+      { path: amongUs1 },
+      { path: amongUs2 },
+      { path: amongUs3 },
+      { path: amongUs4 },
+      { path: amongUs5 },
+      { path: amongUs6 },
+      { path: amongUs7 },
+      { path: amongUs8 },
+      { path: amongUs9 },
+      { path: amongUs10 },
+      { path: amongUs11 },
+      { path: amongUs12 },
+      { path: amongUs13 },
+      { path: amongUs14 },
+      { path: amongUs15 },
+      { path: amongUs16 },
+      { path: amongUs17 },
+      { path: amongUs18 },
+      { path: amongUs19 },
+      { path: amongUs20 },
+      { path: amongUs21 },
     ]
   },
   {
-    name: "EA SPORTS FC Mobile Futbol", variants: [
-      { path: eaSports1 },
-      { path: eaSports2 },
-      { path: eaSports3 },
-      { path: eaSports4 },
-      { path: eaSports5 },
-      { path: eaSports6 },
-      { path: eaSports7 },
-      { path: eaSports8 },
-      { path: eaSports9 },
-      { path: eaSports10 },
-      { path: eaSports11 },
-      { path: eaSports12 },
-      { path: eaSports13 },
-      { path: eaSports14 },
-    ]
-  },
-  {
-    name: "PUBG MOBILE", variants: [
-      { path: pubg1 },
-      { path: pubg2 },
-      { path: pubg3 },
-      { path: pubg4 },
-      { path: pubg5 },
-      { path: pubg6 },
-      { path: pubg7 },
-      { path: pubg8 },
-      { path: pubg9 },
-      { path: pubg10 },
-      { path: pubg11 },
-      { path: pubg12 },
+    name: "Snapchat",url:'snapchat', variants: [
+      { path: snapchat1 },
+      { path: snapchat2 },
+      { path: snapchat3 },
+      { path: snapchat4 },
+      { path: snapchat5 },
+      { path: snapchat6 },
+      { path: snapchat7 },
+      { path: snapchat8 },
+      { path: snapchat9 },
+      { path: snapchat10 },
+      { path: snapchat11 },
+      { path: snapchat12 },
+      { path: snapchat13 },
+      { path: snapchat14 },
+      { path: snapchat15 },
+      { path: snapchat16 },
+      { path: snapchat17 },
+      { path: snapchat18 },
+      { path: snapchat19 },
+      { path: snapchat20 },
     ]
   }
 ];
