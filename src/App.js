@@ -116,8 +116,8 @@ function App() {
         return;
       }
 
-      const canvas = canvasRef.current;
-      const video = videoRef.current;
+    const canvas = canvasRef.current;
+    const video = videoRef.current;
       
       // Video akışının başlatılıp başlatılmadığını kontrol et
       if (!video.srcObject || !video.srcObject.active) {
@@ -134,11 +134,11 @@ function App() {
       console.log("Fotoğraf çekiliyor...");
 
       // Canvas boyutlarını ayarla
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
       
-      const context = canvas.getContext("2d");
-      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    const context = canvas.getContext("2d");
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
       
       // Debug için canvas'ı görünür yap
       canvas.style.display = "block";
@@ -170,9 +170,9 @@ function App() {
       const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
       const mat = window.cv.matFromImageData(imageData);
       
-      const detectedIcons = [];
+    const detectedIcons = [];
 
-      for (const icon of icons) {
+    for (const icon of icons) {
         console.log(`${icon.name} için analiz başlıyor...`);
         let bestScore = 0;
 
@@ -236,11 +236,11 @@ function App() {
       
       img.onload = () => {
         try {
-          const canvas = document.createElement("canvas");
-          canvas.width = img.width;
-          canvas.height = img.height;
-          const ctx = canvas.getContext("2d");
-          ctx.drawImage(img, 0, 0);
+        const canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
           const mat = window.cv.imread(canvas);
           resolve(mat);
         } catch (error) {
@@ -289,7 +289,7 @@ function App() {
       // ORB dedektörü - basit parametrelerle
       orb = new window.cv.ORB(500);
 
-      // Özellik tespiti
+    // Özellik tespiti
       kp1 = new window.cv.KeyPointVector();
       des1 = new window.cv.Mat();
       kp2 = new window.cv.KeyPointVector();
@@ -298,12 +298,12 @@ function App() {
       orb.detectAndCompute(normalized1, new window.cv.Mat(), kp1, des1);
       orb.detectAndCompute(normalized2, new window.cv.Mat(), kp2, des2);
 
-      // Özellik eşleştirme
+    // Özellik eşleştirme
       bf = new window.cv.BFMatcher(window.cv.NORM_HAMMING, true);
       matches = new window.cv.DMatchVector();
 
       if (des1.rows > 0 && des2.rows > 0) {
-        bf.match(des1, des2, matches);
+    bf.match(des1, des2, matches);
 
         // Eşleşmeleri mesafeye göre sırala
         const matchesArray = Array.from({ length: matches.size() }, (_, i) => matches.get(i))
@@ -500,10 +500,10 @@ function App() {
                 <h3>Tespit Edilen Oyunlar</h3>
                 {matchedIcons.length > 0 ? (
                   <ul className="icons-list">
-                    {matchedIcons.map((icon, index) => (
+        {matchedIcons.map((icon, index) => (
                       <IconItem key={index} icon={icon} />
-                    ))}
-                  </ul>
+        ))}
+      </ul>
                 ) : !error && !scanning && (
                   <p className="no-results">Henüz bir oyun tespit edilmedi</p>
                 )}
@@ -513,7 +513,7 @@ function App() {
           <Route path="/app/:url" element={<AppDetail />} />
           <Route path="/app/:url/news" element={<News />} />
         </Routes>
-      </div>
+    </div>
     </Router>
   );
 }
